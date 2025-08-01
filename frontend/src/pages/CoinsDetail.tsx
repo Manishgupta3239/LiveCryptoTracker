@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, Search, RefreshCw } from 'lucide-react';
 
 const CryptoDetails = () => {

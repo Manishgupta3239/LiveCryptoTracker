@@ -1,4 +1,5 @@
 
+import axios from "axios";
 import { create } from "zustand";
 
 export interface Coin {
@@ -6,16 +7,16 @@ export interface Coin {
   name: string;
   symbol: string;
   image: string;
-  current_price: number;
-  market_cap: number;
-  price_change_percentage_24h: number;
-  last_updated: string;
+  price: number;
+  marketCap: number;
+  change24h: number;
+  updatedAt: string;
+
 }
 
 interface CryptoState {
   coins: Coin[];
   loading: boolean;
-//   error: string | null;
   fetchCoins: (id? : string , ) => Promise<void>;
 }
 
@@ -26,13 +27,13 @@ const UseCryptoStore = create<CryptoState>((set)=>({
     fetchCoins : async()=>{
             try{
                 set({loading:true});
-                // const res = await axios.get('http://localhost:3000/api/coins');
-                // set({coins : res.data});
-                // console.log(res.data);
+                const res = await axios.get('http://localhost:3000/api/coins');
+                set({coins : res.data.data});
+                console.log(res.data.data);
             }catch(error){
                 console.log(error);
             }finally{
-              // set({loading:false});
+              set({loading:false});
             }
         }
 }))
