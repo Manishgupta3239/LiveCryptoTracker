@@ -1,0 +1,33 @@
+# =====================
+# Global Node/React/MERN
+# =====================
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================
+# Backend (Node + Express)
+# =====================
+/backend/node_modules/
+/backend/.env
+/backend/dist/
+/backend/coverage/
+/backend/*.tsbuildinfo
+
+# MongoDB dump
+/backend/dump/
+/backend/*.gz
+
