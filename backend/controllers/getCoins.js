@@ -1,9 +1,8 @@
 import axios from "axios";
 import currentData from "../models/CurrentDataModel.js";
-import cron from "node-cron";
-import { get } from "mongoose";
 import historyData from "../models/HistoryDataModel.js";
-//  {
+
+
 //             "id": "bitcoin",
 //             "symbol": "btc",
 //             "name": "Bitcoin",
@@ -31,6 +30,7 @@ import historyData from "../models/HistoryDataModel.js";
 //             "roi": null,
 //             "last_updated": "2025-08-01T06:32:41.516Z"
 //         }
+
 export const getCoins = async (req, res) => {
   try {
     // const response = await axios.get(
@@ -57,6 +57,7 @@ export const getCoins = async (req, res) => {
     //           price: coin.current_price,
     //           marketCap: coin.market_cap,
     //           change24h: coin.price_change_percentage_24h,
+    //           ranking: coin.market_cap_rank
     //         }
     //       },
     //       {new: true, upsert: true});
@@ -64,7 +65,7 @@ export const getCoins = async (req, res) => {
     // }
     const coins = await currentData.find();
     console.log("run every minute");
-    return res.json({ data: coins });
+    return res.status(201).json({ data: coins });
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ error: "Failed to fetch coin data" });
@@ -72,12 +73,6 @@ export const getCoins = async (req, res) => {
 };
 
 export const coinsHistory = async (req, res) => {
-  try {
-    
-  } catch (error) {}
-};
-
-cron.schedule('*/30 * * * *', async () => {
   try {
     const response = await axios.get(
       "https://api.coingecko.com/api/v3/coins/markets",
@@ -100,11 +95,27 @@ cron.schedule('*/30 * * * *', async () => {
           price: coin.current_price,
           marketCap: coin.market_cap,
           change24h: coin.price_change_percentage_24h,
+          ranking: coin.market_cap_rank
         });
       }
       console.log("api hit after 1 min");
+      res.status(200).json({message:"data saved"});
     }
   } catch (error) {
     console.log(error);
   }
-});
+};
+
+export const coinsHistoryById = async(req,res)=>{
+  const {coinName} = req.params;
+    try{
+        const data = await historyData.find({name:coinName});
+        if(data.length ==0){
+            return res.status(404).json({message:"No data found"});
+        }
+        res.status(200).json({data});
+    }catch(error){
+        console.log(error);
+        return res.status(500).error({error:"server error .."});
+    }
+}

@@ -11,13 +11,14 @@ export interface Coin {
   marketCap: number;
   change24h: number;
   updatedAt: string;
-
+  ranking: number;
 }
 
 interface CryptoState {
   coins: Coin[];
   loading: boolean;
-  fetchCoins: (id? : string , ) => Promise<void>;
+  fetchCoins: ( ) => Promise<void>;
+  fetchCoinsHistory: (name?:string ) => Promise<void>;
 }
 
 
@@ -35,6 +36,18 @@ const UseCryptoStore = create<CryptoState>((set)=>({
             }finally{
               set({loading:false});
             }
-        }
+        },
+    fetchCoinsHistory: async(name)=>{
+        try{
+                set({loading:true});
+                const res = await axios.get(`http://localhost:3000/api/history/${name}`);
+                set({coins : res.data.data});
+                console.log(res.data.data);
+            }catch(error){
+                console.log(error);
+            }finally{
+              set({loading:false});
+            }
+    }
 }))
 export default UseCryptoStore;

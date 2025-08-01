@@ -35,6 +35,9 @@ const currentDataSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    ranking:{
+      type:Number,
+    }
   },
   {
     versionKey: false,

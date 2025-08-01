@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { coinsHistory, getCoins } from "../controllers/getCoins.js";
+import { coinsHistory, coinsHistoryById, getCoins } from "../controllers/getCoins.js";
 
 const router = Router();
 
@@ -10,8 +10,6 @@ router.get('/coins',getCoins)
 router.post('/history',coinsHistory)
 
 // get history of particular coin
-router.get('/history/:coinId',(req,res)=>{
-    console.log("post route");
-})
+router.get('/history/:coinName',coinsHistoryById)
 
 export default router;

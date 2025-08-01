@@ -30,6 +30,9 @@ const historyDataSchema = new mongoose.Schema(
       type: Number, 
       required: true,
     },
+    ranking:{
+      type: Number,
+    }
   },
   {
     versionKey: false,

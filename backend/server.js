@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import coinsRoute from "./routes/coinsRoute.js";
 import cors from "cors"
 import { connectDb } from "./config/db.js";
+import axios from "axios";
+import cron from "node-cron";
 
 
 dotenv.config();
@@ -16,6 +18,11 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/api" , coinsRoute);
+cron.schedule('0 * * * *', async () => {
+   await axios.post("http://localhost:3000/api/history");
+   console.log("data saved");
+});
+
 connectDb();
 
 app.listen(process.env.PORT, ()=>{
