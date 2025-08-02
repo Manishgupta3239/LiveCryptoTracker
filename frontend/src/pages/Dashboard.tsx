@@ -8,13 +8,16 @@ const Dashboard = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
+  // every 30 minutes
   useEffect(() => {
     fetchCoins();
     const interval = setInterval(()=>{
       console.log("run every 30 minutes...");
         fetchCoins();
     },1000*60*30);
-     return ()=> clearInterval(interval);
+    
+    return ()=> clearInterval(interval);
+
   }, [fetchCoins]);
   
   function formatMarketCap(value: number) {
@@ -52,7 +55,7 @@ const Dashboard = () => {
           className="bg-blue-600 h-11 w-28 rounded-[10px] text-[20px] flex justify-center items-center text-white hover:bg-blue-700"
           onClick={() => {
             fetchCoins();
-            setSearch('');
+            setSearch('')
           }}
         >
           <RefreshCw className="size-4 mt-1 mr-2"/> Refresh
@@ -161,7 +164,7 @@ const Dashboard = () => {
                 key={coin.name}
                 className="px-6 py-4 hover:bg-gray-50 transition-colors"
                 onClick={() => {
-                  navigate(`/${coin.name}`);
+                  navigate(`/${coin.coinId}`);
                 }}
               >
                 <div className="grid grid-cols-12 gap-4 items-center">

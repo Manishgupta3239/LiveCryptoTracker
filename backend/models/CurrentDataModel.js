@@ -31,21 +31,15 @@ const currentDataSchema = new mongoose.Schema(
       type: Number, 
       required: true,
     },
-    timestamp: {
-      type: Date,
-      default: Date.now,
-    },
     ranking:{
       type:Number,
     }
   },
   {
-    versionKey: false,
     timestamps:true
   }
 );
 
-// Optional: add index to coinId for faster upserts
 currentDataSchema.index({ coinId: 1 }, { unique: true });
 
 const currentData = mongoose.model("CurrentData", currentDataSchema);

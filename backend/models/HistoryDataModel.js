@@ -30,18 +30,26 @@ const historyDataSchema = new mongoose.Schema(
       type: Number, 
       required: true,
     },
+    high24:{
+      type: Number, 
+      required: true,
+    },
+    low24:{
+      type: Number, 
+      required: true,
+    },
+    totalVolume:{
+      type: Number, 
+      required: true,
+    },
     ranking:{
       type: Number,
     }
   },
   {
-    versionKey: false,
     timestamps:true
   }
 );
-
-// Optional: add index to coinId for faster upserts
-// historyDataSchema.index({ coinId: 1 }, { unique: true });
 
 const historyData = mongoose.model("historyData", historyDataSchema);
 

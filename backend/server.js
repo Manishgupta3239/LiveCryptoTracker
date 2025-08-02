@@ -18,8 +18,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/api" , coinsRoute);
+// cron job
 cron.schedule('0 * * * *', async () => {
-   await axios.post("https://livecryptotracker-53be.onrender.com/api/history");
+   await axios.post("http://localhost:3000/api/history");
    console.log("data saved");
 });
 
