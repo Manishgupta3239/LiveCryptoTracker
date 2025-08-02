@@ -2,7 +2,6 @@ import axios from "axios";
 import currentData from "../models/CurrentDataModel.js";
 import historyData from "../models/HistoryDataModel.js";
 
-
 //             "id": "bitcoin",
 //             "symbol": "btc",
 //             "name": "Bitcoin",
@@ -37,6 +36,9 @@ export const getCoins = async (req, res) => {
     const response = await axios.get(
       "https://api.coingecko.com/api/v3/coins/markets",
       {
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+        },
         params: {
           vs_currency: "usd",
           order: "market_cap_desc",
@@ -71,7 +73,6 @@ export const getCoins = async (req, res) => {
   }
 
   try {
-    
     const coins = await currentData.find();
     return res.status(200).json({ data: coins });
   } catch (dbError) {
@@ -79,7 +80,6 @@ export const getCoins = async (req, res) => {
     return res.status(500).json({ error: "Failed to fetch coin data from DB" });
   }
 };
-
 
 export const coinsHistory = async (req, res) => {
   try {
@@ -104,27 +104,27 @@ export const coinsHistory = async (req, res) => {
           price: coin.current_price,
           marketCap: coin.market_cap,
           change24h: coin.price_change_percentage_24h,
-          ranking: coin.market_cap_rank
+          ranking: coin.market_cap_rank,
         });
       }
       console.log("api hit after 1 min");
-      res.status(200).json({message:"data saved"});
+      res.status(200).json({ message: "data saved" });
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-export const coinsHistoryById = async(req,res)=>{
-  const {coinName} = req.params;
-    try{
-        const data = await historyData.find({name:coinName});
-        if(data.length == 0){
-            return res.status(404).json({message:"No data found"});
-        }
-        res.status(200).json({data});
-    }catch(error){
-        console.log(error);
-        return res.status(500).error({error:"server error .."});
+export const coinsHistoryById = async (req, res) => {
+  const { coinId } = req.params;
+  try {
+    const data = await historyData.find({ coinId });
+    if (data.length == 0) {
+      return res.status(404).json({ message: "No data found" });
     }
-}
+    res.status(200).json({ data });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).error({ error: "server error .." });
+  }
+};

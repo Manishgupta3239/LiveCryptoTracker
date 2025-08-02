@@ -10,6 +10,6 @@ router.get('/coins',getCoins)
 router.post('/history',coinsHistory)
 
 // get history of particular coin
-router.get('/history/:coinName',coinsHistoryById)
+router.get('/history/:coinId',coinsHistoryById)
 
 export default router;
