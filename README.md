@@ -1,46 +1,46 @@
-# 🚀 Crypto Tracker – VR Automations Developer Test
+#  Crypto Tracker – VR Automations Developer Test
 
 A full-stack MERN cryptocurrency tracker that displays the top 10 cryptocurrencies in real time using the CoinGecko API, and stores hourly price snapshots for historical data and future charting.
 
 ---
-## 🛠 Deployment Links
+##  Deployment Links
 | Service     | URL                                                                                  
 
 | 🌐 Client | https://cryptotracker-aee1b.web.app/ 
 | 🔌 Server  | https://livecryptotracker-53be.onrender.com   
 
 
-## 🛠 Tech Stack Used
+##  Tech Stack Used
 
-### 🔹 Client
+###  Client
 - React (Vite)
 - TypeScript
 - Zustand (for global state)
 - Axios
 - Tailwind CSS
 
-### 🔹 Server
+###  Server
 - Node.js
 - Express.js
 - Axios
 - Mongoose
 - node-cron
 
-### 🔹 Database
+###  Database
 - MongoDB Atlas
 
 ---
 
-## 📦 Setup & Installation
+##  Setup & Installation
 
-### 🔧 Prerequisites
+###  Prerequisites
 - Node.js (v18+)
 - MongoDB Atlas URI
 - Git CLI
 
 ---
 
-### 🧩 1. Clone the Repository
+ 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/crypto-tracker.git
@@ -87,8 +87,8 @@ Render logs also show the job running with a timestamp
 
 🖼️ Screenshots
 
-![Dashboard Screenshot](./assets/Client.png)
-![Dashboard Screenshot](./assets/Client1.png)
+![Dashboard Screenshot](./assets/frontend.png)
+![Dashboard Screenshot](./assets/frontend1.png)
 
 ### 📁 MongoDB Data Snapshot
 
