@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin:'https://cryptotracker-aee1b.web.app/',
+    origin:'https://cryptotracker-aee1b.web.app',
     credentials: true,
 }));
 
