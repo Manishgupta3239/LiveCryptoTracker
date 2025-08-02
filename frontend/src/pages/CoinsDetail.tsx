@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import UseCryptoStore from "../store/cryptoStore";
 import { useNavigate, useParams } from "react-router-dom";
+import NotFound from "./NotFound";
+import Spinner from "../components/Spinner";
 
 const CoinDetails = () => {
   const { loading, coins, fetchCoinsHistory } = UseCryptoStore();
@@ -46,11 +48,11 @@ const CoinDetails = () => {
 
   return loading ? (
     <div className="flex h-screen w-full justify-center items-center">
-      Loading...
+      <Spinner/>
     </div>
   ) : coins.length == 0 ? (
     <div className="flex h-screen w-full justify-center items-center">
-      No data found
+      <NotFound/>
     </div>
   ) : (
     <div className="w-full min-h-screen bg-gray-50 py-6 px-4 md:px-10">

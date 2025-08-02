@@ -18,7 +18,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/api" , coinsRoute);
-// cron job
+// cron job run after 1hr
 cron.schedule('0 * * * *', async () => {
    await axios.post("https://livecryptotracker-53be.onrender.com/api/history");
    console.log("data saved");
