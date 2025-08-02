@@ -1,2 +1,2 @@
 ###
-GET  http://localhost:3000/api/history/Bitcoin
+GET  https://livecryptotracker-xqz0.onrender.com/api/coins

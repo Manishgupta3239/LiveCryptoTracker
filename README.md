@@ -7,7 +7,7 @@ A full-stack MERN cryptocurrency tracker that displays the top 10 cryptocurrenci
 | Service     | URL                                                                                  
 
 | 🌐 Client | https://cryptotracker-aee1b.web.app/ 
-| 🔌 Server  | https://livecryptotracker-53be.onrender.com   
+| 🔌 Server  | https://livecryptotracker-xqz0.onrender.com   
 
 
 ##  Tech Stack Used
