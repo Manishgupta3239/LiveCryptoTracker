@@ -9,7 +9,8 @@ export const getCoins = async (req, res) => {
       "https://api.coingecko.com/api/v3/coins/markets",
       {
         headers: {
-          "User-Agent": "Mozilla/5.0",
+         "User-Agent": "Mozilla/5.0",
+  "Accept-Encoding": "gzip, deflate, compress",
         },
         params: {
           vs_currency: "usd",
@@ -40,9 +41,14 @@ export const getCoins = async (req, res) => {
         );
       }
     }
-  } catch (error) {
-    console.log("API failed:", error.message);
+  }catch (error) {
+  if (error.response) {
+    console.error("❌ CoinGecko API error:", error.response.status);
+    console.error(error.response.data);
+  } else {
+    console.error("⚠️ Axios error (no response):", error.message);
   }
+}
 
   try {
     const coins = await currentData.find();
