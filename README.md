@@ -3,11 +3,30 @@
 A full-stack MERN cryptocurrency tracker that displays the top 10 cryptocurrencies in real time using the CoinGecko API, and stores hourly price snapshots for historical data and future charting.
 
 ---
+# Live Website
+CryptoTracker =>  https://cryptotracker-aee1b.web.app/ 
+
+🖼️ Screenshots
+
+![Dashboard Screenshot](./assets/frontend.png)
+![Dashboard Screenshot](./assets/frontend1.png)
+
+### 📁 MongoDB Data Snapshot
+
+![MongoDB Screenshot](./assets/history.png)
+
+![MongoDB Screenshot](./assets/currentdata.png)
+
+### 🔁 Cron Job Log
+
+![Cron Job Screenshot](./assets/cronjob.png)
+
+
 ##  Deployment Links
 | Service     | URL                                                                                  
 
-| 🌐 Client | https://cryptotracker-aee1b.web.app/ 
-| 🔌 Server  | https://livecryptotracker-xqz0.onrender.com   
+|  Client | https://cryptotracker-aee1b.web.app/ 
+|  Server  | https://livecryptotracker-xqz0.onrender.com   
 
 
 ##  Tech Stack Used
@@ -85,17 +104,4 @@ Each coin is stored with a timestamp in the HistoryData collection
 You can find this logic in server/cron/priceSnapshot.js
 Render logs also show the job running with a timestamp
 
-🖼️ Screenshots
 
-![Dashboard Screenshot](./assets/frontend.png)
-![Dashboard Screenshot](./assets/frontend1.png)
-
-### 📁 MongoDB Data Snapshot
-
-![MongoDB Screenshot](./assets/history.png)
-
-![MongoDB Screenshot](./assets/currentdata.png)
-
-### 🔁 Cron Job Log
-
-![Cron Job Screenshot](./assets/cronjob.png)
