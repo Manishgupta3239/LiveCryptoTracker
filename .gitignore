@@ -25,6 +25,7 @@ yarn-error.log*
 /backend/.env
 /backend/dist/
 /backend/coverage/
+/backend/.http
 /backend/*.tsbuildinfo
 
 # MongoDB dump

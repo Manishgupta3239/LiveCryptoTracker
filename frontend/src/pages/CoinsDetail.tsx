@@ -8,10 +8,10 @@ const CoinDetails = () => {
   const [animatedPrice, setAnimatedPrice] = useState(0);
   const { coins ,loading ,fetchCoinsHistory} = UseCryptoStore();
   type Params = {
-  name: string;
+  coinId: string;
 };
-
-  const {name}  = useParams<Params>();
+const {coinId}  = useParams<Params>();
+  console.log("id",coinId)
   // Sample data (in real app, this would come from API)
   const coinData = {
     "id": "bitcoin",
@@ -43,9 +43,9 @@ const CoinDetails = () => {
   };
 
   useEffect(() => {
-    fetchCoinsHistory(name);
-  }, [fetchCoinsHistory , name])
-  console.log(coins)
+    fetchCoinsHistory(coinId);
+  }, [fetchCoinsHistory , coinId])
+  console.log("coins details",coins)
 
   // Price animation effect
   // useEffect(() => {

@@ -117,6 +117,7 @@ export const coinsHistory = async (req, res) => {
 
 export const coinsHistoryById = async (req, res) => {
   const { coinId } = req.params;
+  console.log(coinId);
   try {
     const data = await historyData.find({ coinId });
     if (data.length == 0) {

@@ -3,7 +3,7 @@ import axios from "axios";
 import { create } from "zustand";
 
 export interface Coin {
-  id: string;
+  coinId: string;
   name: string;
   symbol: string;
   image: string;
@@ -18,7 +18,7 @@ interface CryptoState {
   coins: Coin[];
   loading: boolean;
   fetchCoins: ( ) => Promise<void>;
-  fetchCoinsHistory: (name?:string ) => Promise<void>;
+  fetchCoinsHistory: (coinId?:string ) => Promise<void>;
 }
 
 
@@ -28,7 +28,7 @@ const UseCryptoStore = create<CryptoState>((set)=>({
     fetchCoins : async()=>{
             try{
                 set({loading:true});
-                const res = await axios.get('http://localhost:3000/api/coins');
+                const res = await axios.get('https://livecryptotracker-53be.onrender.com/api/coins');
                 set({coins : res.data.data});
                 console.log(res.data.data);
             }catch(error){
@@ -37,10 +37,10 @@ const UseCryptoStore = create<CryptoState>((set)=>({
               set({loading:false});
             }
         },
-    fetchCoinsHistory: async(name)=>{
+    fetchCoinsHistory: async(coinId)=>{
         try{
                 set({loading:true});
-                const res = await axios.get(`http://localhost:3000/api/history/${name}`);
+                const res = await axios.get(`https://livecryptotracker-53be.onrender.com/api/history/${coinId}`);
                 set({coins : res.data.data});
                 console.log(res.data.data);
             }catch(error){
