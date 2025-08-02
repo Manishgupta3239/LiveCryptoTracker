@@ -11,6 +11,10 @@ dotenv.config();
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log('Origin:', req.headers.origin);
+  next();
+});
 app.use(cors({
   origin: 'https://cryptotracker-aee1b.web.app',
   methods: ['GET', 'POST'],
