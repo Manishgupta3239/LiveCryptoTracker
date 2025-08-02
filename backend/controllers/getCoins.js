@@ -33,44 +33,53 @@ import historyData from "../models/HistoryDataModel.js";
 
 export const getCoins = async (req, res) => {
   try {
-    // const response = await axios.get(
-    //   "https://api.coingecko.com/api/v3/coins/markets",
-    //   {
-    //     params: {
-    //       vs_currency: "usd",
-    //       order: "market_cap_desc",
-    //       per_page: 10,
-    //       page: 1,
-    //     },
-    //   }
-    // );
-    // if (response.data.length > 0) {
-    //   for (const coin of response.data) {
-    //     await currentData.findOneAndUpdate(
-    //       { coinId: coin.id },
-    //       {
-    //         $set: {
-    //           coinId: coin.id,
-    //           name: coin.name,
-    //           symbol: coin.symbol,
-    //           image: coin.image,
-    //           price: coin.current_price,
-    //           marketCap: coin.market_cap,
-    //           change24h: coin.price_change_percentage_24h,
-    //           ranking: coin.market_cap_rank
-    //         }
-    //       },
-    //       {new: true, upsert: true});
-    //   }
-    // }
-    const coins = await currentData.find();
-    console.log("run every minute");
-    return res.status(201).json({ data: coins });
+    // api call
+    const response = await axios.get(
+      "https://api.coingecko.com/api/v3/coins/markets",
+      {
+        params: {
+          vs_currency: "usd",
+          order: "market_cap_desc",
+          per_page: 10,
+          page: 1,
+        },
+      }
+    );
+
+    if (response.data.length > 0) {
+      for (const coin of response.data) {
+        await currentData.findOneAndUpdate(
+          { coinId: coin.id },
+          {
+            $set: {
+              coinId: coin.id,
+              name: coin.name,
+              symbol: coin.symbol,
+              image: coin.image,
+              price: coin.current_price,
+              marketCap: coin.market_cap,
+              change24h: coin.price_change_percentage_24h,
+              ranking: coin.market_cap_rank,
+            },
+          },
+          { new: true, upsert: true }
+        );
+      }
+    }
   } catch (error) {
-    console.log(error.message);
-    return res.status(500).json({ error: "Failed to fetch coin data" });
+    console.log("API failed:", error.message);
+  }
+
+  try {
+    
+    const coins = await currentData.find();
+    return res.status(200).json({ data: coins });
+  } catch (dbError) {
+    console.log("DB Read failed:", dbError.message);
+    return res.status(500).json({ error: "Failed to fetch coin data from DB" });
   }
 };
+
 
 export const coinsHistory = async (req, res) => {
   try {
@@ -110,7 +119,7 @@ export const coinsHistoryById = async(req,res)=>{
   const {coinName} = req.params;
     try{
         const data = await historyData.find({name:coinName});
-        if(data.length ==0){
+        if(data.length == 0){
             return res.status(404).json({message:"No data found"});
         }
         res.status(200).json({data});

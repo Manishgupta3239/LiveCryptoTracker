@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const CoinDetails = () => {
   
   const [animatedPrice, setAnimatedPrice] = useState(0);
-  const { coins , fetchCoinsHistory} = UseCryptoStore();
+  const { coins ,loading ,fetchCoinsHistory} = UseCryptoStore();
   type Params = {
   name: string;
 };
@@ -46,6 +46,7 @@ const CoinDetails = () => {
     fetchCoinsHistory(name);
   }, [fetchCoinsHistory , name])
   console.log(coins)
+
   // Price animation effect
   // useEffect(() => {
   //   let start = 0;
@@ -90,7 +91,8 @@ const CoinDetails = () => {
   const supplyPercentage = (coinData.circulating_supply / coinData.max_supply) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
+    loading?(<div className='h-screen w-full flex justify-center items-center'>loading...</div>):
+    coins.length == 0 ? (<div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex justify-center item">No data found</div>):<div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">

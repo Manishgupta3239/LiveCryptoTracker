@@ -62,7 +62,7 @@ const Dashboard = () => {
       {/* data */}
       <div className="w-full border-black border-2 h-96 mt-12 rounded-[10px] overflow-auto">
          <div className="grid grid-cols-12 gap-4 items-center px-6 py-3 bg-gray-100 border-b font-semibold text-gray-700 sticky top-0 z-10">
-    <div className="col-span-1">#</div>
+    <div className="col-span-1">Rank</div>
     <div className="col-span-3">Name</div>
     <div className="col-span-2">Price</div>
     <div className="col-span-2">24h Change</div>
@@ -84,7 +84,13 @@ const Dashboard = () => {
                   }}
                 >
                   <div className="grid grid-cols-12 gap-4 items-center">
-                    
+
+                    {/* Rank */}
+                  <div className="col-span-1">
+                    <span className="text-gray-600 font-medium">
+                      #{coin.ranking}
+                    </span>
+                  </div>                    
 
                     {/* Name & Image */}
                     <div className="col-span-3 flex items-center gap-3">
@@ -162,7 +168,7 @@ const Dashboard = () => {
                   {/* Rank */}
                   <div className="col-span-1">
                     <span className="text-gray-600 font-medium">
-                      {coin.ranking}
+                      #{coin.ranking}
                     </span>
                   </div>
 
