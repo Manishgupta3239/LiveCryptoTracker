@@ -9,8 +9,8 @@ export const getCoins = async (req, res) => {
       "https://api.coingecko.com/api/v3/coins/markets",
       {
         headers: {
-         "User-Agent": "Mozilla/5.0",
-  "Accept-Encoding": "gzip, deflate, compress",
+          "User-Agent": "Mozilla/5.0",
+          "Accept-Encoding": "gzip, deflate, compress",
         },
         params: {
           vs_currency: "usd",
@@ -39,19 +39,16 @@ export const getCoins = async (req, res) => {
           },
           { new: true, upsert: true }
         );
+        console.log("fetched live data");
       }
     }
-  }catch (error) {
-  if (error.response) {
-    console.error("❌ CoinGecko API error:", error.response.status);
-    console.error(error.response.data);
-  } else {
-    console.error("⚠️ Axios error (no response):", error.message);
+  } catch (error) {
+    console.error("api failed", error.message);
   }
-}
 
   try {
     const coins = await currentData.find();
+    console.log("data fetched from mongoose");
     return res.status(200).json({ data: coins });
   } catch (error) {
     console.log("DB  failed:", error.message);
@@ -83,9 +80,9 @@ export const coinsHistory = async (req, res) => {
           marketCap: coin.market_cap,
           change24h: coin.price_change_percentage_24h,
           ranking: coin.market_cap_rank,
-          high24:coin.high_24h,
-          low24:coin.low_24h,
-          totalVolume:coin.total_volume
+          high24: coin.high_24h,
+          low24: coin.low_24h,
+          totalVolume: coin.total_volume,
         });
       }
       console.log("api hit after 1 min");

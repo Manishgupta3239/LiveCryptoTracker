@@ -26,7 +26,7 @@ CryptoTracker =>  https://cryptotracker-aee1b.web.app/
 | Service     | URL                                                                                  
 
 |  Client | https://cryptotracker-aee1b.web.app/ 
-|  Server  | https://livecryptotracker-xqz0.onrender.com   
+|  Server  | https://invigorating-transformation-production.up.railway.app   
 
 
 ##  Tech Stack Used
@@ -101,7 +101,6 @@ This endpoint fetches the top 10 coins from CoinGecko
 
 Each coin is stored with a timestamp in the HistoryData collection
 
-You can find this logic in server/cron/priceSnapshot.js
-Render logs also show the job running with a timestamp
+Render logs also show the job running 
 
 

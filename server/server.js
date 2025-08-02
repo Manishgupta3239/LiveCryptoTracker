@@ -11,10 +11,6 @@ dotenv.config();
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log('Origin:', req.headers.origin);
-  next();
-});
 app.use(cors({
   origin: 'https://cryptotracker-aee1b.web.app',
   methods: ['GET', 'POST'],
@@ -26,7 +22,7 @@ app.use(express.json());
 app.use("/api" , coinsRoute);
 // cron job run after 1hr
 cron.schedule('0 * * * *', async () => {
-   await axios.post("https://livecryptotracker-xqz0.onrender.com/api/history");
+   await axios.post("https://invigorating-transformation-production.up.railway.app/api/history");
    console.log("data saved");
 });
 
