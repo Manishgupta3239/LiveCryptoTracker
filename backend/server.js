@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:'https://cryptotracker-aee1b.web.app/',
     credentials: true,
 }));
 
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use("/api" , coinsRoute);
 // cron job
 cron.schedule('0 * * * *', async () => {
-   await axios.post("http://localhost:3000/api/history");
+   await axios.post("https://livecryptotracker-53be.onrender.com/api/history");
    console.log("data saved");
 });
 

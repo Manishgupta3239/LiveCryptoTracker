@@ -31,7 +31,7 @@ const UseCryptoStore = create<CryptoState>((set)=>({
     fetchCoins : async()=>{
             try{
                 set({loading:true});
-                const res = await axios.get('http://localhost:3000/api/coins');
+                const res = await axios.get('https://livecryptotracker-53be.onrender.com/api/coins');
                 set({coins : res.data.data});
                 console.log(res.data.data);
             }catch(error){
@@ -43,7 +43,7 @@ const UseCryptoStore = create<CryptoState>((set)=>({
     fetchCoinsHistory: async(coinId)=>{
         try{
                 set({loading:true});
-                const res = await axios.get(`http://localhost:3000/api/history/${coinId}`);
+                const res = await axios.get(`https://livecryptotracker-53be.onrender.com/api/history/${coinId}`);
                 set({coins : res.data.data});
                 console.log(res.data.data);
             }catch(error){
