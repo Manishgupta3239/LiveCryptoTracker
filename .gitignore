@@ -19,16 +19,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # =====================
-# Backend (Node + Express)
+# server (Node + Express)
 # =====================
-/backend/node_modules/
-/backend/.env
-/backend/dist/
-/backend/coverage/
-/backend/.http
-/backend/*.tsbuildinfo
+/server/node_modules/
+/server/.env
+/server/dist/
+/server/coverage/
+/server/.http
+/server/*.tsbuildinfo
 
 # MongoDB dump
-/backend/dump/
-/backend/*.gz
+/server/dump/
+/server/*.gz
 
