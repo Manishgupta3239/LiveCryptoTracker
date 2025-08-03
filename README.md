@@ -62,7 +62,7 @@ CryptoTracker =>  https://cryptotracker-aee1b.web.app/
  1. Clone the Repository
 
 ```bash
-git clone https://github.com/guptamanish3239/crypto-tracker.git
+git clone https://github.com/Manishgupta3239/LiveCryptoTracker.git
 cd crypto-tracker
 
 
