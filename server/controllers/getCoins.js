@@ -20,7 +20,7 @@ export const getCoins = async (req, res) => {
         },
       }
     );
-
+    console.log(response);
     if (response.data.length > 0) {
       for (const coin of response.data) {
         await currentData.findOneAndUpdate(
