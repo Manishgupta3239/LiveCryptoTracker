@@ -10,9 +10,9 @@ import cron from "node-cron";
 dotenv.config();
 
 const app = express();
-
+// https://cryptotracker-aee1b.web.app
 app.use(cors({
-  origin: 'https://cryptotracker-aee1b.web.app',
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -29,6 +29,6 @@ cron.schedule('0 * * * *', async () => {
 connectDb();
 
 app.listen(process.env.PORT, ()=>{
-    console.log("listing to port 3000");
+    console.log(`listing to port ${process.env.PORT}`);
 })
 
