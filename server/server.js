@@ -22,7 +22,7 @@ app.use(express.json());
 app.use("/api" , coinsRoute);
 // cron job run after 1hr
 cron.schedule('0 * * * *', async () => {
-   await axios.post("https://invigorating-transformation-production.up.railway.app/api/history");
+   await axios.post("https://livecryptotracker-xy9u.onrender.com/api/history/");
    console.log("data saved");
 });
 
