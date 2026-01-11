@@ -10,9 +10,9 @@ import cron from "node-cron";
 dotenv.config();
 
 const app = express();
-// https://cryptotracker-aee1b.web.app
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://cryptotracker-aee1b.web.app',
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use("/api" , coinsRoute);
 // cron job run after 1hr
 cron.schedule('0 * * * *', async () => {
-   await axios.post("https://invigorating-transformation-production.up.railway.app/api/history");
+   await axios.post("https://cryptotracker-aee1b.web.app/api/history");
    console.log("data saved");
 });
 

@@ -1,0 +1,13 @@
+
+services:
+  client:
+    image: champion3239/cryptotracker-client:latest
+    ports:
+      - 5173:5173
+
+  server:
+    image: champion3239/cryptotracker-server:latest
+    ports: 
+      - 3000:3000
+    env_file:
+      - .env
