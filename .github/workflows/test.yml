@@ -1,13 +1,15 @@
-name: test
+name: test workflow
 
 on: push
 
 jobs:
-  hello:
+  manish:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Info
-        run: |
-          echo "Repo: ${{ github.repository }}"
-          echo "Branch: ${{ github.ref }}"
-          echo "Actor: ${{ github.actor }}"
+      - name : first step
+      run: |
+        echo "Repo: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref }}"
+        echo "Actor: ${{ github.actor }}"
+        echo "hello world"
+            
