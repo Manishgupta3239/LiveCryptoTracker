@@ -12,7 +12,7 @@ export const getCoins = async (req, res) => {
           "User-Agent": "Mozilla/5.0",
           "Accept-Encoding": "gzip, deflate, compress",
         },
-        params: {
+        params:{
           vs_currency: "usd",
           order: "market_cap_desc",
           per_page: 10,
