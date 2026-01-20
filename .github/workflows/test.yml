@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Info
-      run: |
-        echo "Repo: ${{ github.repository }}"
-        echo "Branch: ${{ github.ref }}"
-        echo "Actor: ${{ github.actor }}"
+        run: |
+          echo "Repo: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
