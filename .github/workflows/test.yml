@@ -1,0 +1,13 @@
+name: test
+
+on: push
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Info
+      run: |
+        echo "Repo: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref }}"
+        echo "Actor: ${{ github.actor }}"
