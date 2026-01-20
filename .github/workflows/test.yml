@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name : first step
-      run: |
-        echo "Repo: ${{ github.repository }}"
-        echo "Branch: ${{ github.ref }}"
-        echo "Actor: ${{ github.actor }}"
-        echo "hello world"
+        run: |
+          echo "Repo: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+          echo  "hello world"
             
