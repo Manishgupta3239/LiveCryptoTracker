@@ -19,3 +19,21 @@ jobs:
 
       - name: second step
         run: echo "this is second step"
+        
+  merge-to-main:
+    needs: manish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetches all history for all branches
+
+      - name: Merge into main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git checkout main
+          git merge origin/Manishgupta3239-patch-1 --no-ff
+          git push origin main
