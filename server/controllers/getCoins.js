@@ -43,7 +43,7 @@ export const getCoins = async (req, res) => {
       }
     }
   } catch (error) {
-    console.log("api error =>",error);
+    console.log("api error",error);
     console.error("api failed", error.message);
   }
 
