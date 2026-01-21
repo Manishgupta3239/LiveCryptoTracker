@@ -14,3 +14,5 @@ jobs:
           echo  "hello world"
       - name : second step
         run : echo "this is second step"
+      - name : fail build
+        run : exit 1
