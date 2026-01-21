@@ -22,7 +22,7 @@ app.use("/api" , coinsRoute);
 // cron job run after 1hr
 cron.schedule('0 * * * *', async () => {
    await axios.post("https://cryptotracker-aee1b.web.app/api/history");
-   console.log("data saved");
+   console.log("data saved ");
 });
 
 connectDb();
