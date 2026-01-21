@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - Manishgupta3239-patch-1
 
 jobs:
   manish:
