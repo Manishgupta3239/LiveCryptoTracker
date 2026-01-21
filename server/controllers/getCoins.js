@@ -4,7 +4,7 @@ import historyData from "../models/HistoryDataModel.js";
 
 export const getCoins = async (req, res) => {
   try {
-    // api call
+    // api call 
     const response = await axios.get(
       "https://api.coingecko.com/api/v3/coins/markets",
       {
