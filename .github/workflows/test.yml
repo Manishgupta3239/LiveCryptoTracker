@@ -2,17 +2,19 @@ name: test workflow
 
 on:
   push:
-    branches: main
+    branches:
+      - main
 
 jobs:
   manish:
     runs-on: ubuntu-latest
     steps:
-      - name : first step
+      - name: first step
         run: |
           echo "Repo: ${{ github.repository }}"
           echo "Branch: ${{ github.ref }}"
           echo "Actor: ${{ github.actor }}"
-          echo  "hello world"
-      - name : second step
-        run : echo "this is second step"
+          echo "hello world"
+
+      - name: second step
+        run: echo "this is second step"
