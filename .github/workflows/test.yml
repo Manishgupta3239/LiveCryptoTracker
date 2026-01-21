@@ -1,9 +1,6 @@
 name: test workflow
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   manish:
