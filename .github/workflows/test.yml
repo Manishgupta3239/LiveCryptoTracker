@@ -32,7 +32,6 @@ jobs:
       - name: Merge into main
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           git checkout main
           git merge origin/Manishgupta3239-patch-1 --no-ff
