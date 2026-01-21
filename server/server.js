@@ -28,5 +28,5 @@ cron.schedule('0 * * * *', async () => {
 connectDb();
 
 app.listen(process.env.PORT, ()=>{
-    console.log(`listing to port ${process.env.PORT}`);
+    console.log(` listing to port ${process.env.PORT}`);
 })
