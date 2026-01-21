@@ -1,6 +1,9 @@
 name: test workflow
 
-on: push
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   manish:
@@ -14,5 +17,3 @@ jobs:
           echo  "hello world"
       - name : second step
         run : echo "this is second step"
-      - name : fail build
-        run : exit 1
