@@ -7,7 +7,7 @@ on:
       - Manishgupta3239-patch-1
 
 jobs:
-  manish:
+  mainjob:
     runs-on: ubuntu-latest
     steps:
       - name: first step
