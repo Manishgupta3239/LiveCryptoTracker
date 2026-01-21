@@ -1,6 +1,10 @@
 name: test workflow
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - Manishgupta3239-patch-1
 
 jobs:
   manish:
